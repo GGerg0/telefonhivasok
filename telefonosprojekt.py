@@ -8,6 +8,5 @@ mp = int(input())
 print(mpbe(o,p,mp))
 
 f= open("hivas.txt", "rt")
-
 f.readline()
 
