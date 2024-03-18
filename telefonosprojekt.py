@@ -36,12 +36,16 @@ varakozo = 0
 for hivasok in range(len(adatok)):
     start = mpbe(int(adatok[hivasok][0]),int(adatok[hivasok][1]),int(adatok[hivasok][2]))
     end = mpbe(int(adatok[hivasok][3]),int(adatok[hivasok][4]),int(adatok[hivasok][5]))
-    if bemenet < end:
-        if bemenet > start:
-            varakozo += 1
-            sorszam.append(hivasok)
-            
-print(f'A varakozok szama: {varakozo-1} a beszelo a {sorszam[0]+1}. hivo.\n')
+    if int(adatok[hivasok][3]) >= 8 and int(adatok[hivasok][0]) < 12:
+        if bemenet < end:
+            if bemenet > start:
+                varakozo += 1
+                sorszam.append(hivasok)
+
+if sorszam == []:
+    print("Nincs telefonalo\n")
+else:
+    print(f'A varakozok szama: {varakozo-1} a beszelo a {sorszam[0]+1}. hivo.\n')
             
 sorszam = 0
 varakozas = 0
