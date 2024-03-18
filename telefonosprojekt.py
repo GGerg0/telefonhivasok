@@ -57,3 +57,26 @@ for hivasok in range(len(adatok)):
             elozo = end
             
 print(f"6. feladat\nAz utolso telefonalo adatai a(z) {sorszam}. sorban vannak, {varakozas} masodpercig vart.")
+
+stat = open("sikeres.txt","wt")
+
+sorszam = 0
+elozo = 0
+befejezes = [8,0,0]
+index = 0
+for hivasok in range(len(adatok)):
+    start = mpbe(int(adatok[hivasok][0]),int(adatok[hivasok][1]),int(adatok[hivasok][2]))
+    end = mpbe(int(adatok[hivasok][3]),int(adatok[hivasok][4]),int(adatok[hivasok][5]))
+    
+    if int(adatok[hivasok][3]) >= 8 and int(adatok[hivasok][0]) < 12:
+        
+        if end > elozo:
+            stat.write(f"{hivasok+1} ")
+            for i in range(len(befejezes)):
+                stat.write(f'{befejezes[i]} ')
+            befejezes = [adatok[hivasok][3],adatok[hivasok][4],adatok[hivasok][5]]
+            for i in range(len(befejezes)):
+                stat.write(f"{befejezes[i]} ")
+            stat.write("\n")
+            elozo = end
+            
