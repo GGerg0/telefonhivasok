@@ -1,14 +1,7 @@
 def mpbe(o,p,mp):
     return int(o*3600+p*60+mp)
 
-'''o = int(input())
-p = int(input())
-mp = int(input())
-
-print(mpbe(o,p,mp))'''
-
 f= open("hivas.txt", "rt")
-
 
 orak = {}
 adatok = []
@@ -21,9 +14,6 @@ for sor in f:
     else:
         orak[sor[0]] = 1
 
-print(adatok)
-
-
 print("3. Feladat")
 for k,v in orak.items():
     print(f"{k} ora {v} hivas")
@@ -34,7 +24,7 @@ for hivasok in range (len(adatok)):
     if leghosszabb[1] < masodperc:
         leghosszabb = hivasok+1,masodperc
 
-print(f"4. feladat\nA leghosszabb ideig vonalban levo hivo {leghosszabb[0]}. sorban szerepel,\na hivas hossza: {leghosszabb[1]} masodperc")
+print(f"4. feladat\nA leghosszabb ideig vonalban levo hivo {leghosszabb[0]}. sorban szerepel,\na hivas hossza: {leghosszabb[1]} masodperc\n")
 
 bemenet = input("5. feladat\nAdjon meg egy időpontot! (ora perc masodperc) ").split(" ")
 bemenet = mpbe(int(bemenet[0]),int(bemenet[1]),int(bemenet[2]))
@@ -51,5 +41,19 @@ for hivasok in range(len(adatok)):
             varakozo += 1
             sorszam.append(hivasok)
             
-print(f'A varakozok szama: {varakozo-1} a beszelo a {sorszam[0]+1}. hivo.')
+print(f'A varakozok szama: {varakozo-1} a beszelo a {sorszam[0]+1}. hivo.\n')
             
+sorszam = 0
+varakozas = 0
+elozo = 0
+for hivasok in range(len(adatok)):
+    start = mpbe(int(adatok[hivasok][0]),int(adatok[hivasok][1]),int(adatok[hivasok][2]))
+    end = mpbe(int(adatok[hivasok][3]),int(adatok[hivasok][4]),int(adatok[hivasok][5]))
+    
+    if int(adatok[hivasok][0]) < 12:
+        if end > elozo:
+            sorszam = hivasok+1
+            varakozas = elozo - start
+            elozo = end
+            
+print(f"6. feladat\nAz utolso telefonalo adatai a(z) {sorszam}. sorban vannak, {varakozas} masodpercig vart.")
